@@ -40,7 +40,7 @@ studentSchema.statics.hashPassword = async function (password){
 
 
 studentSchema.methods.generateAuthToken = function () {
-    const token = jwt.sign({ _id: this._id.toString() }, process.env.JWT_SECRET, { expiresIn: '2h' });
+    const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '2h' });
     return token;
 };
 
