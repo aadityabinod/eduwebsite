@@ -22,18 +22,7 @@ const teacherSchema = new Schema({
   
 });
 
-teacherSchema.pre('save', async function(next){
-   if(this.isModified('password')){
-       this.password = await bcrypt.hash(this.password, 8);
-   }
-   next();
-})
-
-teacherSchema.methods.generateAuthToken = function(){
-    const token = jwt.sign({id: this._id}, process.env.JWT_SECRET, {expiresIn: '2h'});
-}
-
-
+teacherSchema.methods
 
 const teacherModel = model('Teacher', teacherSchema);
 
