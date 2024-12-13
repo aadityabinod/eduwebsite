@@ -1,5 +1,7 @@
-import teacherModel from "../models/teacher.model";
+import teacherModel from "../models/teacher.model.js";
 import { validationResult } from "express-validator";
+import blacklistTokenModel from "../models/blacklistToken.js";  
+
 
 async function createTeacher({email,password, name, subject}){
     if(!email || !password || !name || !subject){
@@ -67,5 +69,8 @@ export const getTeacherProfile = async (req, res, next)=>{
 
 export const logoutTeacher = async (req, res, next)=>{  
     res.clearCookie("token");
+    const token = req.cookies.token || req.headers.authorization.split(' ')[ 1 ];
+
+    await blacklistTokenModel.create({ token });
     res.status(200).json({message:"Logged out successfully"});
 }
