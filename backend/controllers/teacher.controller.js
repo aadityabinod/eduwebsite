@@ -41,7 +41,7 @@ export const registerTeacher = async (req, res, next)=>{
     res.status(201).json({teacher, token});
 }
 
-export const loginStudent = async (req, res, next)=>{
+export const loginTeacher= async (req, res, next)=>{
     const errors = validationResult(req);
 
     if(!errors.isEmpty()){
