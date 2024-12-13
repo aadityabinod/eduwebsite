@@ -35,6 +35,6 @@ teacherSchema.methods.generateAuthToken = function(){
 
 
 
-const Teacher = model('Teacher', teacherSchema);
+const teacherModel = model('Teacher', teacherSchema);
 
-export default Teacher;
+export default teacherModel;
