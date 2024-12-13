@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from "dotenv"
 import cors from "cors"
+import cookieParser from "cookie-parser"
 import connectToDB from "./db/db.js"
 import studentRoutes from "./routes/student.route.js"
 import teacherRoutes from "./routes/teacher.route.js"

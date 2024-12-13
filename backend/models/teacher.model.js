@@ -1,7 +1,8 @@
-import { compare } from 'bcryptjs';
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-const teacherSchema = new Schema({
+const teacherSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -28,14 +29,14 @@ teacherSchema.methods.generateAuthToken = function () {
     return token;
 }
 
-teacherModel.methods.comparePassword = async function (password) {
-    return await compare(password, this.password);
+teacherSchema.methods.comparePassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
 }
 
-teacherModel.statics.hashPassword = async function (password) {
+teacherSchema.statics.hashPassword = async function (password) {
     return await hash(password, 8);
 }
 
-const teacherModel = model('Teacher', teacherSchema);
+const teacherModel = mongoose.model('Teacher', teacherSchema);
 
 export default teacherModel;

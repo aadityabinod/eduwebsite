@@ -11,3 +11,5 @@ router.post('/login', loginTeacher);
 router.post('/logout', authTeacher, logoutTeacher);
 
 router.get('/profile', authTeacher, getTeacherProfile);
+
+export default router;

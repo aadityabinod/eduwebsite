@@ -1,7 +1,7 @@
 import studentModel from '../models/student.model.js';
 import jwt from 'jsonwebtoken';
 import teacherModel from '../models/teacher.model.js';
-import BlackListTokenModel from '../models/blacklistToken.model.js';    
+import blacklistTokenmodel from '../models/blacklistTokenmodel.js';
 
 async function authEntity(req,res, next, model){
 
@@ -11,7 +11,7 @@ async function authEntity(req,res, next, model){
         return res.status(401).json({message: 'Unauthorized'});
     }
 
-    const isBlackListed = await BlackListTokenModel.findOne({token: token});
+    const isBlackListed = await blacklistTokenmodel.findOne({token: token});
     if(isBlackListed){
         return res.status(401).json({message: 'Unauthorized'});
     }

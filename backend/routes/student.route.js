@@ -12,3 +12,4 @@ router.post('/logout', authStudent, logoutStudent);
 
 router.get('/profile', authStudent, getStudentProfile);
 
+export default router;
