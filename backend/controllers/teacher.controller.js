@@ -1,6 +1,6 @@
 import teacherModel from "../models/teacher.model.js";
 import { validationResult } from "express-validator";
-import blacklistTokenModel from "../models/blacklistToken.js";  
+import blacklistTokenModel from "../models/blacklistTokenmodel.js";  
 
 
 async function createTeacher({email,password, name, subject}){

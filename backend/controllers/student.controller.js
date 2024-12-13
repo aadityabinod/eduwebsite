@@ -1,6 +1,6 @@
 import studentModel from "../models/student.model.js";
 import {validationResult} from 'express-validator';
-import blacklistTokenModel from "../models/blacklistToken.js";  
+import blacklistTokenModel from "../models/blacklistTokenmodel.js";  
 
 async function createStudent({name, email, password, grade}){
      if(!name || !email || !password || !grade){
